@@ -197,7 +197,7 @@ with col2_expander:
     #st_player('https://www.facebook.com/maranathacolours/videos/848017566088447/')
 
     # Gallery
-    st.subheader('Shun the bandwargon,be the trend!!!!!')
+    st.subheader('Shun the bandwagon,be the trend!!!!!')
     if st.button('Reset to Proceed'):
         st.empty()
     if st.button('Be the Trend Gallery..'):
@@ -302,6 +302,7 @@ col2.write('*32, Admiralty Way Lekki Phase1 Lagos*')
 contact_form = """
 <form action="https://formsubmit.co/dominionresearchsolutions@gmail.com" method="POST">
 <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="__next" value="https://share.streamlit.io/dominion2068/shopping/main/shop.py/thanks.html">
 <input type="text" name="name" placeholder= "Your name" required>
 <input type="email" name="email" placeholder= "Your email" required>
 <input type="text" name="phone" placeholder= "mobile phone" required>
