@@ -1,9 +1,18 @@
 import streamlit as st
 from PIL import Image
 from streamlit_player import st_player
+import json
+import requests
+from streamlit_lottie import st_lottie
 
 
 st.set_page_config(page_title="Online Shops",page_icon='🛍️')
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
 # st.markdown(""" <style>
 # #MainMenu {visibility: hidden;}
@@ -29,12 +38,16 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 #         padding-bottom: {padding}rem;
 #     }} </style> """, unsafe_allow_html=True)
 
+lottie_shops = load_lottieurl('https://assets10.lottiefiles.com/private_files/lf30_9kdbftpx.json')
+
+
 col1, col2, col3, = st.columns([0.5, 1, 0.5])
 #col2.image('img6.jpg',use_column_width=True, width=300,caption = '')
-col2.header("The Market Link")
+st_lottie(lottie_shops, height=200)
+col2.header("Online Shopping Link")
 
 col1, col2 = st.columns(2)
-col1.subheader('ORI TIWA Skin Care Product')
+col1.markdown('**ORI TIWA** Skin Care Product')
 col1_expander = col1.expander('Enter Shop1: ORI TIWA')
 with col1_expander:
     logo = Image.open('./ori/006.jpg')
@@ -68,6 +81,12 @@ with col1_expander:
     
 
     st.markdown("""----""")
+    # def load_lottiefile(filepath: str):
+    #     with open(filepath, 'r') as f:
+    #         return json.load(f)
+    # lottief = load_lottiefile('order-now.json')
+    
+    #height=, width=
     #st.markdown('**Order Form**')
     contact_form = """
     <form action="https://formsubmit.co/oritiwabeautyproducts@gmail.com" method="POST">
@@ -85,8 +104,19 @@ with col1_expander:
     st.markdown('**Prices**')
     st.markdown('- 1 litre: N3000')
     st.markdown('- 400ml: N1500')
-    if st.button('Order Form: Ori Tiwa'):
-        st.markdown('**Order form for Ori Tiwa**')
+    st.markdown("""----""")
+
+    # def load_lottieurl(url: str):
+    #     r = requests.get(url)
+    #     if r.status_code != 200:
+    #         return None
+    #     return r.json()
+    
+    lottie_deliver = load_lottieurl('https://assets2.lottiefiles.com/packages/lf20_d3chs3uh.json')
+    lottie_buy = load_lottieurl('https://assets2.lottiefiles.com/packages/lf20_pMgZwk.json')
+    st_lottie(lottie_buy)
+    
+    if st.button('Place Your Orders for Ori Tiwa'):
         st.markdown(contact_form, unsafe_allow_html = True)
         #use local css file
         def local_css(file_name):
@@ -94,7 +124,8 @@ with col1_expander:
                 st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html = True)   
 
         local_css('style/style.css')
-        #st.write('click Send before you reset')
+        st.markdown('**Delivery Available**')
+        st_lottie(lottie_deliver)
     
     
     if st.button('Contact Details: Ori Tiwa'):
@@ -112,7 +143,7 @@ with col1_expander:
 
 
 
-col2.subheader('Maranatha Outfits')
+col2.markdown('**Maranatha** Outfits')
 col2_expander = col2.expander('Enter Shop2: Maranatha')
 with col2_expander:
     col2_expander.image('./per/020.jpg', use_column_width=True,caption = '')
@@ -197,9 +228,10 @@ with col2_expander:
     #st_player('https://www.facebook.com/maranathacolours/videos/848017566088447/')
 
     # Gallery
-    st.subheader('Shun the bandwagon,be the trend!!!!!')
     if st.button('Reset to Proceed'):
         st.empty()
+    st.subheader('Shun the bandwagon,be the trend!!!!!')
+    
     if st.button('Be the Trend Gallery..'):
         g1 = Image.open('./per/024.jpg')
         g2 = Image.open('./per/022.jpg')
@@ -221,8 +253,8 @@ with col2_expander:
         st.image(g8,width=500,caption= '')
         st.image(g9,width=500,caption= '')
         st.image(ten,width=500,caption= '')
-    if st.button('Reset to Default Page'):
-        st.empty()
+    # if st.button('Reset to Default Page'):
+    #     st.empty()
 
     st.markdown("""----""")
     if st.button('View Prices'):
@@ -251,8 +283,8 @@ with col2_expander:
         st.markdown('- An item such as tees, shirt , jeans, skirt  is N2000')
         st.markdown('- Complete natives #4000 (excluding agbada)')
         st.markdown('Other items are negotiable')
-    if st.button('Clear Prices'):
-        st.empty()
+    # if st.button('Clear Prices'):
+    #     st.empty()
     st.markdown("""----""")
 
     #st.markdown('**Order Form**')
@@ -269,7 +301,21 @@ with col2_expander:
     <button type="submit">Send Order</button>
     </form>
     """
-    if st.button("Order Form: Maranatha Outfits"):
+
+    # def load_lottieurl(url: str):
+    #     r = requests.get(url)
+    #     if r.status_code != 200:
+    #         return None
+    #     return r.json()
+    
+    lottie_order = load_lottieurl('https://assets1.lottiefiles.com/packages/lf20_jejpizop.json')
+    lottie_delivery = load_lottieurl('https://assets2.lottiefiles.com/packages/lf20_cpkrjlxq.json')
+    st_lottie(lottie_order)
+
+    # lottiem = load_lottiefile('order-now.json')
+    # st_lottie(lottiem)
+    
+    if st.button("Place Your Orders for Maranatha Outfits"):
         st.markdown('**Order form for Maranatha Outfits**')
         st.markdown(contact_form, unsafe_allow_html = True)
         #use local css file
@@ -279,15 +325,19 @@ with col2_expander:
 
         local_css('style/style.css')
         #st.write('click Send before you reset')
-    
-    
+        st.markdown('**Delivery Available**')
+        st_lottie(lottie_delivery)
+
+    if st.button('Reset Order Form'):
+        st.empty()
+
+
     if st.button('Contact Details: Maranatha Outfits'):
         st.write('*Location: 12, Sanusi Ajilete Street, Off College Road Ogba Lagos; Phone:+234 802 825 9456 and WhatsApp: +234 809 825 9456*')
         st.markdown('[Facebook](https://www.facebook.com/maranathacolours/)')
         st.markdown('[Instagram](https://www.instagram.com/maranathacolours_76/)')
-        st.markdown('Note: We deliver within and outside Nigeria, delivery fees apply')
-    if st.button('Reset Order Form'):
-        st.empty()
+        #st.markdown('Note: We deliver within and outside Nigeria, delivery fees apply')
+    
     
     # if st.button('Reset All'):
     #     pyautogui.hotkey('ctrl','F5')
@@ -323,5 +373,3 @@ if col2.button('Contact Developer'):
 col2.write('')
 if col2.button('Close FORM'):
     st.empty()
-    
-
