@@ -4,6 +4,7 @@ from streamlit_player import st_player
 import json
 import requests
 from streamlit_lottie import st_lottie
+from annotated_text import annotated_text
 
 
 st.set_page_config(page_title="Online Shops",page_icon='🛍️')
@@ -33,12 +34,12 @@ def load_lottieurl(url: str):
 #         padding-bottom: {padding}rem;
 #     }} </style> """, unsafe_allow_html=True)
 
-#lottie_shops = load_lottieurl('https://assets10.lottiefiles.com/private_files/lf30_9kdbftpx.json')
+lottie_shops = load_lottieurl('https://assets10.lottiefiles.com/private_files/lf30_9kdbftpx.json')
 
 
 col1, col2, col3, = st.columns([0.5, 1, 0.5])
 # col2.image('img6.jpg',use_column_width=True, width=300,caption = '')
-# st_lottie(lottie_shops, height=200)
+st_lottie(lottie_shops, height=200)
 col2.header("Online Shopping Link")
 
 st.write('----')  
@@ -350,7 +351,6 @@ with col2_expander:
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 # st.markdown('**Josephine Wears** Women Clothing Line')
-from annotated_text import annotated_text
 col1.header('Josephine Wears')
 colj_expander = col1.expander('Enter Shop3: Josephine Wears')
 with colj_expander:
