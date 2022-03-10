@@ -472,6 +472,7 @@ we put great care and creativity towards ensuring that we compare with the best 
     md = Image.open('./jos/MD.jpg')
     st.image(md, use_column_width=True,caption='Josephine Ogar MD/CEO')
 
+    st.markdown('----')
     original = Image.open('./jos/j18.jpg')
     original2 = Image.open('./jos/j18a.jpg')
     annotated_text(('MERMAID',"#e3e4e8"))
